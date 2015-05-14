@@ -58,15 +58,13 @@ class Figure:
                 for i in range(len(self.figure[0]))]
         x = self.x + len(temp) // 2 - len(temp[0]) // 2
         y = self.y - len(temp) // 2 + len(temp[0]) // 2
-        for i in range(x, x - len(temp[0]), -1):
-            if self.can_move(level, 0, 0, (i, y), figure=temp):
-                self.figure = temp
-                self.x = i
-                self.y = y
-                return
-        for i in range(x, x + len(temp[0])):
-            if self.can_move(level, 0, 0, (i, y), figure=temp):
-                self.figure = temp
-                self.x = i
-                self.y = y
-                return
+        for i in range(len(temp[0])):
+            if self.can_move(level, 0, 0, (x - i, y), temp):
+                self.x = x - i
+            elif self.can_move(level, 0, 0, (x + i, y), temp):
+                self.x = x + i
+            else:
+                continue
+            self.figure = temp
+            self.y = y
+            return
