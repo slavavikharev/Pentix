@@ -10,7 +10,7 @@ WIDTH, HEIGHT = 10, 20
 
 class Game:
 
-    def __init__(self, fullscreen, screen):
+    def __init__(self, fullscreen=False, screen=(800, 600)):
         pygame.display.set_caption("Pentix")
         self.fullscreen = fullscreen
         self.screen_size = screen
