@@ -16,8 +16,11 @@ START = USEREVENT + 4
 def main():
     resolution = (1024, 768)
     game = gm.Game(False, resolution)
-    pygame.mixer.music.load('bg.mp3')
-    pygame.mixer.music.play(loops=-1)
+    try:
+        pygame.mixer.music.load('bg.mp3')
+        pygame.mixer.music.play(loops=-1)
+    except pygame.error:
+        print('There is no music here')
     while not game.quit:
         game.draw()
         for event in pygame.event.get():
